@@ -1,0 +1,6 @@
+coloredlogs==15.0
+Flask==1.1.2
+Flask-APScheduler==1.11.0
+Flask-PyMongo==2.3.0
+python-dotenv==0.15.0
+requests==2.25.1
