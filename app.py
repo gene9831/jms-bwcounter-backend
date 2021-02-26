@@ -33,11 +33,6 @@ logger.addHandler(fh)
 coloredlogs.install(level='INFO')
 
 
-if scheduler_api_enabled:
-    logger.warning(
-        'SCHEDULER_API_ENABLED is set to true, DO NOT use it in production deployment')
-
-
 class Config(object):
     SCHEDULER_API_ENABLED = scheduler_api_enabled
     MONGO_URI = os.environ.get('MONGO_URI')
