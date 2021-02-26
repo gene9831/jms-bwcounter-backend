@@ -77,7 +77,7 @@ def index():
 
 
 # cron examples
-@scheduler.task('cron', id='get_bwcounter', minute='*')
+@scheduler.task('cron', id='get_bwcounter', hour='*')
 def get_bwcounter():
     logger.info('Acquiring bandwidth counter...')
     current_time = round(time.time()) * 1000
