@@ -62,7 +62,7 @@ scheduler.start()
 def index():
     try:
         n = int(request.args.get('n'))
-    except ValueError:
+    except (ValueError, TypeError):
         n = 10
     n = 24 if n > 24 else n
     n = 1 if n <= 0 else n
