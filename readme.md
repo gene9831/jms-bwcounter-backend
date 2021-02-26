@@ -1,6 +1,6 @@
 # JMS 流量统计 API
 
-使用 [just my socks](<(https://justmysocks3.net/)>) 官方 api，每隔一小时获取已流量数据，保存至 [mongodb](https://www.mongodb.com/) 中
+使用 [just my socks](https://justmysocks3.net/) 官方 api，每隔一小时获取已流量数据，保存至 [mongodb](https://www.mongodb.com/) 中
 
 ## 安装
 
