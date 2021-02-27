@@ -21,10 +21,29 @@ JMS_GETBWCOUNTER_URL=https://justmysocks3.net/members/getbwcounter.php?service=$
 #LOG_FILENAME=a.log
 ```
 
-## 运行
+## 使用
+
+- 运行
 
 ```bash
-gunicorn -b 127.0.0.1:5000 app:app -D
+gunicorn -c gunicorn.conf.py app:app
 ```
 
-> `-D`: 以守护进程形式来运行 `gunicorn` 进程，即后台运行
+- 停止
+
+```bash
+kill $(cat app.pid)
+```
+
+- 重启
+
+```bash
+kill -HUP $(cat app.pid)
+```
+
+- 懒得记命令，写了个简单脚本
+
+```bash
+$ ./manage.sh
+useage: manage.sh [start | stop | restart]
+```
