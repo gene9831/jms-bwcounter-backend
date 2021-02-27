@@ -78,13 +78,24 @@ def get_bwcounter():
     current_time = round(time.time()) * 1000
 
     if jms_getbwcounter_url:
-        r = requests.get(jms_getbwcounter_url)
-        data = {
-            **r.json(),
-            'update_time': current_time
-        }
+        try_times = 3
 
-        mongo.db.bwcounter.insert_one(data)
-        logger.info('Bandwidth counter acquired.')
+        while try_times > 0:
+            try:
+                r = requests.get(jms_getbwcounter_url)
+                data = {
+                    **r.json(),
+                    'update_time': current_time
+                }
+
+                mongo.db.bwcounter.insert_one(data)
+                logger.info('Bandwidth counter acquired.')
+                break
+            except Exception as e:
+                if r and r.text:
+                    logger.error(r.text)
+                logger.error(e)
+                try_times -= 1
+
     else:
         logger.warning('JMS_GETBWCOUNTER_URL is empty')
